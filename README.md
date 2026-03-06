@@ -4,6 +4,46 @@ A layered AI career coaching system built on Claude. Combines a master system pr
 
 ---
 
+## Quick Start
+
+Pick your platform:
+
+### Browser (claude.ai)
+
+No installation required. Open [`setup-assistant-prompt.md`](./setup-assistant-prompt.md), paste its contents into any Claude conversation, and follow the guided setup.
+
+### Desktop App (Claude Desktop)
+
+Clone the repo and run the setup script. It patches your Claude Desktop config automatically. MCP tools (job search, resume parsing, fit scoring) are optional — you can enable them now or later.
+
+**macOS / Linux:**
+```bash
+git clone https://github.com/Khemby/Career-Claude.git
+cd Career-Claude
+./setup.sh
+```
+
+**Windows (PowerShell):**
+```powershell
+git clone https://github.com/Khemby/Career-Claude.git
+cd Career-Claude
+.\setup.ps1
+```
+
+Restart Claude Desktop after the script completes.
+
+### Terminal (Claude Code)
+
+```bash
+git clone https://github.com/Khemby/Career-Claude.git
+cd Career-Claude
+claude
+```
+
+Career Claude activates automatically. If the MCP server hasn't been built yet, Claude operates in skills-only mode — resume auditing, cover letters, and job search strategy all work without it.
+
+---
+
 ## Table of Contents
 
 1. [System Overview](#system-overview)
