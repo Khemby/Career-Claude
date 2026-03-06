@@ -6,6 +6,7 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 import { searchJobs } from "./job-search.js";
 import { parseResume } from "./resume-parser.js";
+import { scoreFit } from "./fit-scorer.js";
 import {
   saveFeedback,
   getFeedback,
@@ -71,6 +72,34 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
           },
         },
         required: ["content"],
+      },
+    },
+
+    // -----------------------------------------------------------------------
+    // Resume-JD fit scorer (requires local Python ML service)
+    // -----------------------------------------------------------------------
+    {
+      name: "score_resume_fit",
+      description:
+        "Semantically scores how well a candidate's resume matches a job description using ML embeddings. " +
+        "Returns a 0–100 fit score, matched skills found in both documents, and skills listed in the job " +
+        "description that are absent from the resume. Call this whenever a user wants to know how well " +
+        "their resume matches a job posting, asks if they are a good fit, or wants to identify gaps. " +
+        "If the service is unavailable, the response will include an 'available: false' field — in that " +
+        "case, inform the user that the ML scoring service is not running and offer to do a manual analysis instead.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          resume_text: {
+            type: "string",
+            description: "The full plain-text content of the resume",
+          },
+          jd_text: {
+            type: "string",
+            description: "The full plain-text content of the job description",
+          },
+        },
+        required: ["resume_text", "jd_text"],
       },
     },
 
@@ -190,6 +219,17 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     const parsed = await parseResume(content, format ?? "text");
     return {
       content: [{ type: "text", text: JSON.stringify(parsed, null, 2) }],
+    };
+  }
+
+  if (name === "score_resume_fit") {
+    const { resume_text, jd_text } = args as {
+      resume_text: string;
+      jd_text: string;
+    };
+    const result = await scoreFit(resume_text, jd_text);
+    return {
+      content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
     };
   }
 
