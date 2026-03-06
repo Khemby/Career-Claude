@@ -1,6 +1,8 @@
 <!-- Career Claude — Claude Code Entry Point -->
-<!-- Skill files live in skills/ — read the relevant one when the task maps to it. -->
-<!-- If MCP tools are unavailable, operate in skills-only mode — all core capabilities still work. -->
+<!-- Skill files live in skills/ — use the Read tool to load the relevant skill file when the task maps to it. -->
+<!-- If MCP tools are unavailable (including get_feedback/save_feedback/remove_feedback), operate in skills-only mode and proceed without loading preferences. -->
+<!-- The workflow below is a 5-step guide — skip any step where the user's opening message has already provided the information. -->
+<!-- If a skill file cannot be read, apply your general career coaching expertise and note to the user that the file was unavailable. -->
 
 # Career Claude — Project Instructions
 
