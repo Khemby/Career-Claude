@@ -282,7 +282,8 @@ function extractEducation(lines: string[]): Education[] {
       current = { degree: line, institution: "", year: null, gpa: null };
     } else if (current.degree && !current.institution) {
       current.institution = line;
-    } else if (yearPattern.test(line)) {
+    }
+    if (yearPattern.test(line) && current.degree && !current.year) {
       current.year = line.match(yearPattern)?.[0] ?? null;
     }
     const gpaMatch = line.match(gpaPattern);
