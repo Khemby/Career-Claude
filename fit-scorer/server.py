@@ -49,7 +49,7 @@ SKILL_PATTERNS = re.compile(
     r"figma|sketch|ux|ui design|user research|"
     r"sales|marketing|growth|revenue|b2b|saas|"
     r"security|compliance|gdpr|soc 2|hipaa"
-    r")\b",
+    r")(?!\w)",
     re.IGNORECASE
 )
 
