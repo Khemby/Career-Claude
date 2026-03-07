@@ -80,8 +80,14 @@ describe("parse_resume", () => {
     assert.ok(result.summary !== null, "summary should not be null");
     assert.ok(result.summary.length > 0, "summary should be non-empty");
 
-    // Experience
-    assert.ok(result.experience.length >= 1, "at least 1 experience role");
+    // Experience — exactly 2 roles with correct grouping
+    assert.equal(result.experience.length, 2, `expected 2 roles, got ${result.experience.length}`);
+    assert.ok(result.experience[0].title.includes("Senior Software Engineer"), `role 1 title: ${result.experience[0].title}`);
+    assert.ok(result.experience[0].company.includes("Acme"), `role 1 company: ${result.experience[0].company}`);
+    assert.ok(result.experience[0].bullets.length >= 2, `role 1 bullets: ${result.experience[0].bullets.length}`);
+    assert.ok(result.experience[1].title.includes("Software Engineer"), `role 2 title: ${result.experience[1].title}`);
+    assert.ok(result.experience[1].company.includes("Beta"), `role 2 company: ${result.experience[1].company}`);
+    assert.ok(result.experience[1].bullets.length >= 1, `role 2 bullets: ${result.experience[1].bullets.length}`);
     const totalBullets = result.experience.reduce((sum, role) => sum + role.bullets.length, 0);
     assert.ok(totalBullets >= 4, `expected >= 4 total bullets, got ${totalBullets}`);
 

@@ -179,7 +179,8 @@ function extractExperience(lines: string[], warnings: string[]): WorkExperience[
     /^(experience|work experience|professional experience|employment|work history)/i;
   const nextSectionHeadings =
     /^(education|skills|certifications|projects|volunteer|publications)/i;
-  const datePattern = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|\d{4})/i;
+  const datePattern = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\b|\b\d{4}\b/i;
+  const bulletPrefix = /^[•\-·]\s*/;
 
   let inExperience = false;
   const experienceLines: string[] = [];
@@ -195,14 +196,23 @@ function extractExperience(lines: string[], warnings: string[]): WorkExperience[
 
   if (experienceLines.length === 0) return [];
 
-  // Simple heuristic: group lines into roles by detecting lines with dates
+  // Simple heuristic: group lines into roles by detecting lines with dates.
+  // Bullets are checked first — they have unambiguous markers (•, -, ·).
   const roles: WorkExperience[] = [];
   let current: Partial<WorkExperience> & { bullets: string[] } = { bullets: [] };
 
   for (const line of experienceLines) {
-    if (datePattern.test(line) && line.length < 80) {
-      // Likely a title/company/date header line
-      if (current.title || current.company) {
+    if (bulletPrefix.test(line)) {
+      current.bullets.push(line.replace(bulletPrefix, "").trim());
+    } else if (datePattern.test(line) && line.length < 80) {
+      // Likely a company/date header line.
+      // If current has only a title (no company, no bullets), it's the title
+      // for THIS role — carry it forward instead of pushing an empty role.
+      const carryTitle = (current.title && !current.company && current.bullets.length === 0)
+        ? current.title
+        : undefined;
+
+      if (!carryTitle && (current.title || current.company)) {
         roles.push({
           title: current.title ?? "Unknown Title",
           company: current.company ?? "Unknown Company",
@@ -219,12 +229,29 @@ function extractExperience(lines: string[], warnings: string[]): WorkExperience[
         current.start_date = dateRange[1];
         current.end_date = dateRange[2];
       }
-      // Title is usually a separate preceding line — mark this as company candidate
+      // Carry forward the title from the preceding line
+      if (carryTitle) {
+        current.title = carryTitle;
+      }
+      // Extract company name (text before the pipe or date)
       current.company = line.replace(/\|.*$/, "").replace(/\d{4}.*$/, "").trim();
-    } else if (line.startsWith("•") || line.startsWith("-") || line.startsWith("·")) {
-      current.bullets.push(line.replace(/^[•\-·]\s*/, "").trim());
-    } else if (!current.title && !datePattern.test(line)) {
+    } else if (!current.title && current.bullets.length === 0) {
+      // First non-bullet, non-date line — likely a role title
       current.title = line;
+    } else if (current.bullets.length > 0 && !datePattern.test(line)) {
+      // Non-bullet, non-date line appearing after bullets — likely the title
+      // of the next role. Push the current role and start a new one.
+      if (current.title || current.company) {
+        roles.push({
+          title: current.title ?? "Unknown Title",
+          company: current.company ?? "Unknown Company",
+          location: current.location ?? null,
+          start_date: current.start_date ?? null,
+          end_date: current.end_date ?? null,
+          bullets: current.bullets,
+        });
+      }
+      current = { title: line, bullets: [] };
     } else {
       current.bullets.push(line);
     }
