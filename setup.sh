@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# ── Career Claude Setup ────────────────────────────────────────────────────────
+# -- Career Claude Setup ------------------------------------------------------
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MCP_ENTRY_PATH="$SCRIPT_DIR/mcp-server/dist/index.js"
+MCP_JSON_PATH="$SCRIPT_DIR/.mcp.json"
+ENV_PATH="$SCRIPT_DIR/mcp-server/.env"
 MCP_ONLY=false
 
 for arg in "$@"; do
@@ -15,9 +17,9 @@ done
 
 echo ""
 echo "Career Claude Setup"
-echo "───────────────────────────────────────────────"
+echo "-----------------------------------------------"
 
-# ── Locate Claude Desktop config ──────────────────────────────────────────────
+# -- Locate Claude Desktop config ---------------------------------------------
 
 detect_config_path() {
   local os
@@ -31,7 +33,7 @@ detect_config_path() {
 
 CONFIG_PATH="$(detect_config_path)"
 
-# ── Patch claude_desktop_config.json ─────────────────────────────────────────
+# -- Patch claude_desktop_config.json ------------------------------------------
 
 patch_config() {
   local config_path="$1"
@@ -65,7 +67,61 @@ print(f"Patched: {config_path}")
 PYEOF
 }
 
-# ── Build MCP server ──────────────────────────────────────────────────────────
+# -- Create .mcp.json for Claude Code -----------------------------------------
+
+create_mcp_json() {
+  if [ -f "$MCP_JSON_PATH" ]; then
+    echo ".mcp.json already exists -- skipping."
+    return
+  fi
+
+  cat > "$MCP_JSON_PATH" <<'EOF'
+{
+  "mcpServers": {
+    "career-claude": {
+      "command": "node",
+      "args": ["mcp-server/dist/index.js"]
+    }
+  }
+}
+EOF
+  echo "Created .mcp.json for Claude Code."
+}
+
+# -- Set up .env file for Adzuna keys -----------------------------------------
+
+setup_env_file() {
+  if [ -f "$ENV_PATH" ]; then
+    echo ".env file already exists -- skipping."
+    return
+  fi
+
+  echo ""
+  echo "The job search tool uses the Adzuna API (free tier)."
+  echo "Sign up at: https://developer.adzuna.com/"
+  echo ""
+  read -r -p "Do you have Adzuna API keys to add now? [y/N] " add_keys
+
+  case "$add_keys" in
+    [yY][eE][sS]|[yY])
+      read -r -p "  ADZUNA_APP_ID: " app_id
+      read -r -p "  ADZUNA_API_KEY: " api_key
+      cat > "$ENV_PATH" <<EOF
+# Adzuna API credentials (free tier: https://developer.adzuna.com/)
+ADZUNA_APP_ID=$app_id
+ADZUNA_API_KEY=$api_key
+EOF
+      echo "Saved to mcp-server/.env"
+      ;;
+    *)
+      echo ""
+      echo "No problem -- job search will return sample data until keys are added."
+      echo "When ready, copy mcp-server/.env.example to mcp-server/.env and fill in your keys."
+      ;;
+  esac
+}
+
+# -- Build MCP server ----------------------------------------------------------
 
 build_mcp() {
   echo ""
@@ -96,23 +152,25 @@ build_mcp() {
   echo "MCP server built successfully."
 }
 
-# ── Main flow ─────────────────────────────────────────────────────────────────
+# -- Main flow -----------------------------------------------------------------
 
 if [ "$MCP_ONLY" = true ]; then
   build_mcp
   if [ -n "$CONFIG_PATH" ]; then
     patch_config "$CONFIG_PATH" "$MCP_ENTRY_PATH"
     echo "Claude Desktop config updated."
-    echo "Restart Claude Desktop to activate."
   else
     echo ""
     echo "Could not detect Claude Desktop config path on this OS."
-    echo "Add the MCP entry manually — see README.md for the JSON snippet."
+    echo "Add the MCP entry manually -- see README.md for the JSON snippet."
   fi
+  create_mcp_json
+  setup_env_file
+  echo "Restart Claude Desktop to activate."
   exit 0
 fi
 
-# Normal flow — ask about MCP
+# Normal flow -- ask about MCP
 echo ""
 read -r -p "Enable MCP tools (job search, resume parsing, fit scoring)? Requires Node.js 18+. [y/N] " response
 
@@ -127,8 +185,10 @@ case "$response" in
     else
       echo ""
       echo "Could not detect Claude Desktop config path on this OS."
-      echo "Add the MCP entry manually — see README.md for the JSON snippet."
+      echo "Add the MCP entry manually -- see README.md for the JSON snippet."
     fi
+    create_mcp_json
+    setup_env_file
     ;;
   *)
     echo ""
@@ -137,7 +197,7 @@ case "$response" in
 esac
 
 echo ""
-echo "───────────────────────────────────────────────"
+echo "-----------------------------------------------"
 echo "For claude.ai setup: open setup-assistant-prompt.md and paste it into any Claude conversation."
-echo "For Claude Code (terminal): just run 'claude' in this directory — it's already configured."
+echo "For Claude Code (terminal): just run 'claude' in this directory."
 echo ""

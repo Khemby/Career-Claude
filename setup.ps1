@@ -1,7 +1,7 @@
 #Requires -Version 5.1
 <#
 .SYNOPSIS
-    Career Claude setup for Windows — Claude Desktop + optional MCP server build.
+    Career Claude setup for Windows - Claude Desktop + optional MCP server build.
 .PARAMETER McpOnly
     Skip the prompt and only build the MCP server + patch config.
 #>
@@ -13,10 +13,13 @@ $ErrorActionPreference = "Stop"
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $McpEntryPath = Join-Path $ScriptDir "mcp-server\dist\index.js"
 $ConfigPath = Join-Path $env:APPDATA "Claude\claude_desktop_config.json"
+$McpJsonPath = Join-Path $ScriptDir ".mcp.json"
+$EnvPath = Join-Path $ScriptDir "mcp-server\.env"
+$EnvExamplePath = Join-Path $ScriptDir "mcp-server\.env.example"
 
 Write-Host ""
 Write-Host "Career Claude Setup"
-Write-Host "───────────────────────────────────────────────"
+Write-Host "-----------------------------------------------"
 
 function Patch-Config {
     param([string]$ConfigPath, [string]$McpPath)
@@ -46,6 +49,54 @@ function Patch-Config {
     $config.mcpServers | Add-Member -NotePropertyName "career-claude" -NotePropertyValue $mcpEntry -Force
     $config | ConvertTo-Json -Depth 10 | Set-Content $ConfigPath -Encoding UTF8
     Write-Host "Patched: $ConfigPath"
+}
+
+function Create-McpJson {
+    if (Test-Path $McpJsonPath) {
+        Write-Host ".mcp.json already exists -- skipping."
+        return
+    }
+
+    $mcpJson = @{
+        mcpServers = @{
+            "career-claude" = @{
+                command = "node"
+                args    = @("mcp-server/dist/index.js")
+            }
+        }
+    } | ConvertTo-Json -Depth 10
+
+    $mcpJson | Set-Content $McpJsonPath -Encoding UTF8
+    Write-Host "Created .mcp.json for Claude Code."
+}
+
+function Setup-EnvFile {
+    if (Test-Path $EnvPath) {
+        Write-Host ".env file already exists -- skipping."
+        return
+    }
+
+    Write-Host ""
+    Write-Host "The job search tool uses the Adzuna API (free tier)."
+    Write-Host "Sign up at: https://developer.adzuna.com/"
+    Write-Host ""
+    $addKeys = Read-Host "Do you have Adzuna API keys to add now? [y/N]"
+
+    if ($addKeys -match "^[yY]") {
+        $appId = Read-Host "  ADZUNA_APP_ID"
+        $apiKey = Read-Host "  ADZUNA_API_KEY"
+
+        @(
+            "# Adzuna API credentials (free tier: https://developer.adzuna.com/)"
+            "ADZUNA_APP_ID=$appId"
+            "ADZUNA_API_KEY=$apiKey"
+        ) | Set-Content $EnvPath -Encoding UTF8
+        Write-Host "Saved to mcp-server\.env"
+    } else {
+        Write-Host ""
+        Write-Host "No problem -- job search will return sample data until keys are added."
+        Write-Host "When ready, copy mcp-server\.env.example to mcp-server\.env and fill in your keys."
+    }
 }
 
 function Build-Mcp {
@@ -83,11 +134,13 @@ function Build-Mcp {
     Write-Host "MCP server built successfully."
 }
 
-# ── Main flow ──────────────────────────────────────────────────────────────────
+# -- Main flow -----------------------------------------------------------------
 
 if ($McpOnly) {
     Build-Mcp
     Patch-Config -ConfigPath $ConfigPath -McpPath $McpEntryPath
+    Create-McpJson
+    Setup-EnvFile
     Write-Host "Restart Claude Desktop to activate."
     exit 0
 }
@@ -98,6 +151,8 @@ $response = Read-Host "Enable MCP tools (job search, resume parsing, fit scoring
 if ($response -match "^[yY]") {
     Build-Mcp
     Patch-Config -ConfigPath $ConfigPath -McpPath $McpEntryPath
+    Create-McpJson
+    Setup-EnvFile
     Write-Host ""
     Write-Host "Claude Desktop config updated."
     Write-Host "Restart Claude Desktop to activate all tools."
@@ -107,7 +162,7 @@ if ($response -match "^[yY]") {
 }
 
 Write-Host ""
-Write-Host "───────────────────────────────────────────────"
+Write-Host "-----------------------------------------------"
 Write-Host "For claude.ai setup: open setup-assistant-prompt.md and paste it into any Claude conversation."
-Write-Host "For Claude Code (terminal): just run 'claude' in this directory — it's already configured."
+Write-Host "For Claude Code (terminal): just run 'claude' in this directory."
 Write-Host ""
