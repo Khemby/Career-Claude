@@ -106,7 +106,15 @@ npm run build
 | `ADZUNA_API_KEY` | Your Adzuna API key |
 | `CAREER_CLAUDE_FEEDBACK_PATH` | Override path for the feedback JSON file (default: `~/.career-claude/feedback.json`) |
 
-Without Adzuna credentials, `search_jobs` returns mock data. The feedback tools work with no credentials — they only need filesystem access.
+### Setting up Adzuna credentials
+
+1. Copy the example env file and add your keys:
+   ```bash
+   cp mcp-server/.env.example mcp-server/.env
+   ```
+2. Edit `mcp-server/.env` with your Adzuna App ID and API key.
+
+The server loads this file automatically on startup. Without Adzuna credentials, `search_jobs` returns mock data. The feedback tools work with no credentials — they only need filesystem access.
 
 ## Running
 

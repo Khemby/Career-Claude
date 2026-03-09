@@ -6,3 +6,9 @@ mcp-server/dist/
 mcp-server/node_modules/
 __pycache__/
 *.pyc
+
+# Secrets / local config
+.env
+.env.*
+!.env.example
+.mcp.json

@@ -61,7 +61,6 @@ async function adzunaJobSearch(
     app_key: apiKey,
     results_per_page: String(Math.min(maxResults, 25)),
     what: query,
-    content_type: "application/json",
   });
 
   if (location && location.toLowerCase() !== "remote") {
