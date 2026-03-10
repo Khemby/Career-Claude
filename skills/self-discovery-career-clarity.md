@@ -261,3 +261,13 @@ Self-knowledge shapes how a user tells their professional story:
 - **Career stage** determines structure. Discover-stage users benefit from skills-based resumes. Establish-stage users need achievement-heavy chronological formats. Navigate-stage users need a strong narrative bridge connecting their past to their target.
 
 Use these insights when applying the resume-best-practices and resume-customization skills. Self-discovery output feeds directly into resume strategy.
+
+---
+
+## Related Skills
+
+- **Career Decision-Making** (`skills/career-decision-making.md`) — Use these frameworks when evaluating specific opportunities or deciding whether to stay or leave
+- **Resume Best Practices** (`skills/resume-best-practices.md`) — Your values and work style determine which accomplishments to highlight on your resume
+- **Job Search Strategy** (`skills/job-search-strategy.md`) — Your career stage shapes your entire search approach
+- **Personal Branding** (`skills/personal-branding.md`) — Your values and work style are the foundation of your professional narrative
+- **Interview Preparation** (`skills/interview-preparation.md`) — Use your values to answer culture-fit questions authentically

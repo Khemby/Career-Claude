@@ -234,3 +234,12 @@ Where to look: LinkedIn, alumni networks, professional communities, your extende
 5. "What's one thing you wish someone had told you before you made the switch?"
 
 These questions are designed to surface real emotional data — not job descriptions or logistics, but what the experience actually felt like. That is the information your own imagination cannot reliably generate.
+
+---
+
+## Related Skills
+
+- **Self-Discovery & Career Clarity** (`skills/self-discovery-career-clarity.md`) — If you don't know what you want, start here before evaluating specific opportunities
+- **Job Search Strategy** (`skills/job-search-strategy.md`) — Apply bias awareness to your search process and use informational interviews for surrogation
+- **Interview Preparation** (`skills/interview-preparation.md`) — After deciding to pursue a role, prepare for the interview with structured frameworks
+- **Resume Customization** (`skills/resume-customization.md`) — Understanding why you want this role makes your customization more compelling
