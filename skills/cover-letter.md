@@ -79,6 +79,17 @@ Reference something specific about the company — their stage, their team, thei
 **Example:**
 > "I know from your job description that you're scaling from 50 to 200 enterprise accounts over the next 18 months — a transition I've lived through twice. The playbook for that scale requires different muscle than the growth-stage scrappiness that got you here, and that's exactly where my background in operationalizing success teams sits."
 
+### Addressing Objections in Paragraph 3
+
+Paragraph 3 is also your opportunity to proactively address the thing a hiring manager might question about your candidacy. Don't wait for them to wonder — name it, reframe it, and move on.
+
+- **Career changers**: "My path from [X] to [Y] wasn't a detour — [specific skill] transfers directly because [concrete connection]." Connect roles through outcomes, not just skills.
+- **Employment gaps**: Brief, confident framing — "After [reason], I'm energized to bring [specific value]." One sentence, no apology, no over-explanation.
+- **Industry switches**: Connect the dots between industries with transferable *outcomes*, not just transferable skills. "Scaling onboarding in healthcare taught me the same retention mechanics your ed-tech platform needs" is stronger than "I have transferable communication skills."
+- **Overqualification**: Emphasize what specifically excites you about this scope rather than explaining away your seniority. "Leading a 50-person org taught me that the work I love most is [thing this role does]" beats "I'm happy to take a step back."
+
+**The rule**: Address it once, confidently, then move on. The more space you give an objection, the bigger it looks. One or two sentences signals awareness; a full paragraph signals insecurity.
+
 ---
 
 ### Paragraph 4 — The Close (2–3 sentences)
@@ -100,6 +111,32 @@ Reference something specific about the company — their stage, their team, thei
 
 ---
 
+## Storytelling & Career Narrative
+
+Your cover letter is a narrative, not a document summary. The reader should feel a story unfolding — one with a clear beginning (where you've been), middle (what you've proven), and end (where you're going with *them*).
+
+### The Through-Line
+
+What connects your past roles to this opportunity should be a clear, intentional thread. Before you draft a single paragraph, write your through-line sentence:
+
+> "I've spent my career [theme]."
+
+Examples: "I've spent my career making complex products feel simple." / "I've spent my career building systems that scale without breaking the customer experience."
+
+This sentence becomes the backbone of the entire letter. The hook introduces your theme, the proof demonstrates it with evidence, the fit projects it forward into this role.
+
+### Show Progression, Not Just Experience
+
+Each career move should feel intentional — building toward this moment — even if it wasn't planned that way at the time. Frame transitions as chapters in a coherent story, not disconnected job changes.
+
+- Use your core narrative (from personal branding work) as the backbone: who you are, what drives you, and how this role is the natural next step
+- The reader should finish the letter thinking "this person's entire career has been pointing toward this role"
+- Avoid listing roles chronologically — that's what the resume does. Instead, show how each experience sharpened the specific capability this role demands
+
+**Practical tip**: Write the through-line sentence first, then build the four paragraphs around it. If a paragraph doesn't serve the through-line, cut it or reshape it until it does.
+
+---
+
 ## Tailoring Checklist
 
 Before finalizing a cover letter, verify:
@@ -112,6 +149,19 @@ Before finalizing a cover letter, verify:
 - [ ] Under 400 words
 - [ ] Proofread once for typos, once specifically for name/company errors
 - [ ] Saved as PDF unless otherwise specified
+
+---
+
+## AI Screening Considerations
+
+Some companies now use AI to pre-screen cover letters alongside resumes. Your letter needs to pass both a human reader and an automated parser.
+
+- **Keep formatting clean**: No tables, images, unusual characters, or creative layouts that confuse parsers. Stick to plain paragraphs with standard punctuation.
+- **Include role-specific keywords naturally**: The same ATS principles from resume writing apply here. Weave in terminology from the job description — but only where it reads naturally.
+- **Avoid gimmicks**: Creative formatting, unconventional structures, or embedded links might catch a human's eye but can trip automated screeners.
+- **The four-paragraph structure is inherently AI-friendly**: It's clear, parseable, and keyword-rich by design. You don't need a separate "AI-optimized" version — a well-written, clearly structured cover letter passes both AI and human screens.
+
+**Bottom line**: Write for humans, format for machines. If your letter is clear, specific, and well-structured, it will score well with both audiences.
 
 ---
 
@@ -178,3 +228,12 @@ I'd welcome the chance to discuss how my experience can contribute to [Company]'
 | Executive/senior role | 300–400 words |
 | Referral / personal connection | 150–250 words (shorter is fine) |
 | Creative role (portfolio does the work) | 150–250 words |
+
+---
+
+## Related Skills
+
+- **Personal Branding** (`skills/personal-branding.md`) — Your core narrative is the backbone of your cover letter hook
+- **Interview Preparation** (`skills/interview-preparation.md`) — Cover letter stories should reinforce your interview stories
+- **Self-Discovery & Career Clarity** (`skills/self-discovery-career-clarity.md`) — Your values shape "why this company?" in paragraph 1
+- **Resume Customization** (`skills/resume-customization.md`) — Cover letter and resume should tell complementary stories, not duplicate each other
