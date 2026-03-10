@@ -43,6 +43,21 @@ Read the "About Us" and "What We're Looking For" sections for tone and culture s
 **5. Success Metrics**
 What does success look like in this role? Any mention of metrics or goals tells you what bullets to emphasize.
 
+### Values-Driven Customization
+
+Keyword matching gets you past the ATS. Values alignment is what makes a hiring manager think "this person belongs here."
+
+**Go beyond the requirements section.** Read the company's "About Us," mission statement, and the tone of the JD itself. These reveal what the organization actually cares about — and your resume should reflect those signals back.
+
+**How to apply it:**
+
+1. **Identify value signals** — If the company emphasizes "innovation," surface your most creative or entrepreneurial work. If they talk about "impact," lead with your biggest measurable outcomes. If they say "collaboration," foreground cross-functional wins.
+2. **Match their language naturally** — If the JD says "builders," use "built" in your bullets. If they say "data-driven culture," lead your achievements with metrics. If they talk about "ownership," describe initiatives you drove end-to-end.
+3. **Lead with resonant stories** — If you've done self-discovery work and know your top professional values, check whether they overlap with the company's stated values. When they do, the experiences that demonstrate those shared values should be the first bullets the reader sees.
+4. **Reflect culture in tone** — A startup that calls itself "scrappy" wants concise, high-energy language. An enterprise company emphasizing "rigor" wants precise, structured descriptions. Let the JD's voice inform yours.
+
+**Important:** This is not about being fake. You are not inventing alignment — you are choosing which true stories to tell based on what will resonate most with this specific reader. Every candidate has dozens of real accomplishments; values-driven customization is the art of selecting and sequencing the right ones.
+
 ---
 
 ## Step 2: Gap Analysis
@@ -69,6 +84,14 @@ Create a simple comparison:
 **Hidden Experience** — Candidate has the skill buried in context the JD cares about
 - Example: JD asks for "stakeholder management" — candidate has it buried in a project management bullet.
 - Fix: extract and surface this experience more prominently.
+
+### The 60% Rule
+
+Don't let a gap analysis talk you out of applying. Research from Harvard Business Review shows that men typically apply when they meet roughly 60% of listed qualifications, while women often wait until they meet nearly 100%. The result is a confidence gap, not a competence gap.
+
+**The reality:** Job descriptions are wishlists, not checklists. Hiring managers write aspirational JDs knowing they'll rarely find a candidate who checks every box. Companies will invest in training and ramp time when the core fit is strong.
+
+**The guideline:** If you meet 60% or more of the requirements, apply. Frame the gaps as growth areas in your cover letter or summary — not as disqualifiers. Even "required" skills are rarely absolute dealbreakers for a candidate who demonstrates strong fundamentals, fast learning, and clear alignment with the role's core mission.
 
 ---
 
@@ -142,6 +165,31 @@ After:
 2. Bullets that directly address "required" JD items
 3. Summary — should be completely rewritten for each application
 
+### Addressing Concerns Proactively
+
+The best resumes answer objections before the reader forms them. If you think a hiring manager might wonder about something, address it — don't hope they won't notice.
+
+**Career Changers**
+- Lead with transferable skills, not your previous job title. If you managed complex projects in healthcare and you're moving into tech, "project management" is the headline — not "hospital administrator."
+- Frame the switch as intentional growth, not a retreat. Connect the old function to the new one: "Applied data analysis skills honed in clinical research to product analytics" reads as a deliberate evolution.
+- Your cross-industry perspective is an asset. Name it explicitly in your summary.
+
+**Employment Gaps**
+- Brief, honest, one sentence. "Took parental leave (2023–2024)" or "Completed full-stack development bootcamp" or "Managed family health matter — now fully available and energized to return."
+- No apology, no over-explanation. Gaps are normal. The resume's job is to show what you can do, not account for every month.
+- If you did anything professionally relevant during the gap (freelance, volunteering, coursework), include it.
+
+**Overqualification**
+- Don't hide your experience — explain why this role excites you. A brief line in the summary works: "Seeking a focused IC role after 5 years in management to return to hands-on engineering."
+- Emphasize the specific aspects of this scope that appeal to you. Hiring managers worry you'll be bored; show them you won't be.
+
+**Underqualification**
+- Highlight adjacent experience and pattern-match to JD requirements. "Haven't used Kubernetes" becomes "Managed containerized deployments in Docker; currently completing Kubernetes certification."
+- Show a trajectory of rapid learning. If you picked up three new tools in your last role, that pattern matters more than any single missing skill.
+- Quantify your ramp-up speed when possible: "Self-taught Python in 6 weeks to automate team reporting."
+
+**The principle:** If you think they'll wonder, answer it on the resume. A proactive one-liner beats an awkward silence that lets the reader fill in their own (usually worse) story.
+
 ---
 
 ## Step 5: Section Reordering
@@ -204,3 +252,12 @@ Before submitting the customized resume:
 | **Tier A** (dream role) | 2–3 hours | Full rewrite of summary, all bullets in top 2 roles, skills section review |
 | **Tier B** (good fit) | 45–90 min | Summary rewrite, top 3–5 bullets per role, skills section |
 | **Tier C** (exploratory) | 20–30 min | Summary swap, keyword check, critical gap fixes only |
+
+---
+
+## Related Skills
+
+- **Self-Discovery & Career Clarity** (`skills/self-discovery-career-clarity.md`) — Your values determine which company culture signals to match
+- **Personal Branding** (`skills/personal-branding.md`) — Your core narrative informs the summary rewrite
+- **Resume Best Practices** (`skills/resume-best-practices.md`) — Audit your resume before customizing it
+- **Career Decision-Making** (`skills/career-decision-making.md`) — Understand why you're targeting this role to write a more compelling narrative
