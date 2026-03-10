@@ -1,9 +1,10 @@
 # Career Claude MCP Server
 
-MCP (Model Context Protocol) server that extends Career Claude with five tools:
+MCP (Model Context Protocol) server that extends Career Claude with six tools:
 
 - **`search_jobs`** — Search real job listings using the Adzuna API
 - **`parse_resume`** — Extract structured data from plain text, PDF, or DOCX resumes
+- **`score_resume_fit`** — Semantically score how well a resume matches a job description (requires Python ML service)
 - **`save_feedback`** — Persist a user preference or correction across sessions
 - **`get_feedback`** — Retrieve stored preferences at session start
 - **`remove_feedback`** — Delete a preference by ID
@@ -36,6 +37,20 @@ Extracts structured data from a resume.
 | `format` | string | no | `"text"` (default), `"pdf"`, or `"docx"` |
 
 **Returns:** Structured object with: contact info, summary, work experience (with bullets), education, skills, certifications, and parse warnings.
+
+---
+
+### `score_resume_fit`
+
+Semantically scores how well a resume matches a job description. Requires the Python ML service (`fit-scorer/server.py`) to be running.
+
+**Parameters:**
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `resume_text` | string | yes | Full plain-text content of the resume |
+| `jd_text` | string | yes | Full plain-text content of the job description |
+
+**Returns:** Score (0-100), raw cosine similarity, matched skills, missing skills, and skill counts. If the Python service is not running, returns `{ available: false }` with setup instructions — the MCP server itself does not crash.
 
 ---
 

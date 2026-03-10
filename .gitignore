@@ -6,6 +6,8 @@ mcp-server/dist/
 mcp-server/node_modules/
 __pycache__/
 *.pyc
+.venv/
+venv/
 
 # Secrets / local config
 .env
@@ -15,3 +17,6 @@ __pycache__/
 
 # Internal planning docs
 docs/plans/
+
+# Firecrawl cache
+.firecrawl/

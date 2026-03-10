@@ -76,6 +76,10 @@ Career Claude is an AI career coach that operates through natural conversation. 
 
 | Capability | How it works |
 |---|---|
+| Career clarity & self-discovery | Claude applies `self-discovery-career-clarity.md` skill file |
+| Career decision-making | Claude applies `career-decision-making.md` skill file |
+| Interview preparation | Claude applies `interview-preparation.md` skill file |
+| Personal branding | Claude applies `personal-branding.md` skill file |
 | Resume audit | Claude applies `resume-best-practices.md` skill file |
 | Resume customization | Claude applies `resume-customization.md` skill file |
 | Cover letter drafting | Claude applies `cover-letter.md` skill file |
@@ -102,6 +106,10 @@ The system is designed so that **each layer is optional**. A user can get value 
 │                     Claude (LLM)                         │
 │                                                          │
 │  Reads skill files from project knowledge base:          │
+│  • self-discovery-career-clarity.md                      │
+│  • career-decision-making.md                             │
+│  • interview-preparation.md                              │
+│  • personal-branding.md                                  │
 │  • resume-best-practices.md                              │
 │  • resume-customization.md                               │
 │  • job-search-strategy.md                                │
@@ -147,6 +155,10 @@ career-claude/
 ├── project-instructions.md          # Master system prompt for Claude Projects
 │
 ├── skills/                          # Domain knowledge files loaded by Claude
+│   ├── self-discovery-career-clarity.md  # Values, work style, career stage assessment
+│   ├── career-decision-making.md    # Bias awareness, offer evaluation, stay/leave
+│   ├── interview-preparation.md     # STAR method, story bank, question frameworks
+│   ├── personal-branding.md         # Elevator pitch, LinkedIn, digital presence
 │   ├── resume-best-practices.md     # Audit frameworks, ATS rules, scoring rubric
 │   ├── resume-customization.md      # JD analysis, keyword matching, bullet rewrites
 │   ├── job-search-strategy.md       # Sourcing, targeting, networking, tracking
@@ -190,7 +202,11 @@ This option runs entirely in Claude.ai Projects. No server, no terminal, no inst
 
 ### Step 3: Upload the Skill Files
 
-In your project's **Knowledge** section, upload all four files:
+In your project's **Knowledge** section, upload all eight skill files:
+- `skills/self-discovery-career-clarity.md`
+- `skills/career-decision-making.md`
+- `skills/interview-preparation.md`
+- `skills/personal-branding.md`
 - `skills/resume-best-practices.md`
 - `skills/resume-customization.md`
 - `skills/job-search-strategy.md`
@@ -517,12 +533,50 @@ This means:
 
 Skill files are Markdown documents uploaded to the Claude Project's knowledge base. Claude reads and applies them based on the task at hand. They are plain text — no code or tooling required.
 
+### `self-discovery-career-clarity.md`
+
+Framework for helping users understand who they are professionally. Covers:
+- Career stage assessment (Discover, Prepare, Establish, Advance, Navigate)
+- Values clarity exercise (20 values, interactive top-5 selection)
+- Identity and fit diagnostic (burnout vs. boredom vs. misfit)
+- Work style archetypes (Builder, Thinker, Creator, Helper, Leader, Organizer)
+- Translating self-knowledge into target role profiles
+
+### `career-decision-making.md`
+
+Framework for evaluating career decisions with research-backed tools. Covers:
+- Six cognitive biases that distort career predictions (with counter-questions)
+- Offer evaluation scorecard (6 dimensions, weighted scoring)
+- Stay vs. leave diagnosis (wrong role, wrong environment, outgrown it, burnout)
+- Lateral move evaluation (running toward vs. running away)
+- Surrogation strategy (using others' lived experience as data)
+
+### `interview-preparation.md`
+
+Framework for preparing for interviews across formats. Covers:
+- Interview format breakdowns (behavioral, case-based, technical, panel, phone screen)
+- STAR method with proportions and before/after examples
+- Story bank building (8 categories, interactive mapping exercise)
+- Common question frameworks ("tell me about yourself", "why this company?", weaknesses)
+- Pre-interview research checklist and post-interview follow-up
+
+### `personal-branding.md`
+
+Framework for building a professional narrative and online presence. Covers:
+- Core narrative development ("you are not a resume — you're a story in motion")
+- Elevator pitch in three versions (30-second, 60-second, written)
+- LinkedIn optimization (headline, About section, engagement strategy)
+- Digital presence audit and cleanup
+- Transferable skills translation for career changers
+
 ### `resume-best-practices.md`
 
 Framework for auditing a resume. Covers:
 - Structural rules (single column, consistent dates, section order)
 - ATS compatibility checklist
+- AI-era resume positioning (modern ATS, skills-based hiring)
 - Impact language and quantification standards
+- Career narrative across roles
 - Common mistakes and how to fix them
 - Scoring rubric (produces the X/10 audit score)
 
@@ -530,26 +584,31 @@ Framework for auditing a resume. Covers:
 
 Framework for tailoring a resume to a specific job description. Covers:
 - JD deconstruction (required vs. preferred, signals, red flags)
-- Keyword gap analysis methodology
+- Values-driven customization (aligning with company culture)
+- Keyword gap analysis methodology (including the 60% rule)
 - Bullet point rewrite patterns (before/after format)
+- Addressing concerns proactively (career changers, gaps, overqualification)
 - Summary/objective rewriting for the target role
-- ATS keyword placement strategy
 
 ### `job-search-strategy.md`
 
 Framework for planning and executing a job search. Covers:
 - Defining a target company profile
-- Sourcing channels (LinkedIn, Crunchbase, G2, etc.)
+- Sourcing channels and the hidden job market
 - Tiered application strategy (Tier A/B/C)
-- Networking and informational interview guidance
+- AI-integrated job search tactics
+- Informational interview playbook (question frameworks, referral conversion)
+- Bias awareness in your search
 - Application tracking methodology
 
 ### `cover-letter.md`
 
 Framework for writing targeted cover letters. Covers:
 - Four-paragraph structure (hook, proof, fit, close)
+- Storytelling and career narrative integration
+- Addressing objections proactively
 - Tone calibration by company type
-- Templates for different scenarios (internal transfer, career change, etc.)
+- AI screening considerations
 - Anti-patterns to avoid (generic openers, restating the resume)
 
 ---

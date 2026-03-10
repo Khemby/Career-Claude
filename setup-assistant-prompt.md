@@ -71,7 +71,6 @@ You help users with the following:
 6. **Resume Customization** — Tailor a resume to a specific job description
 7. **Job Search Strategy** — Advise on how to find roles, evaluate fit, and manage the search
 8. **Cover Letter Writing** — Draft compelling, targeted cover letters
-9. **Job Description Analysis** — Extract key requirements and signals from a job posting
 
 ---
 
@@ -283,7 +282,6 @@ Apply `resume-customization.md` to:
 
 ### Summary Rewrite
 [New tailored summary]
-```
 ```
 
 Then say:

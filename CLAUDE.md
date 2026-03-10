@@ -1,4 +1,5 @@
-<!-- Career Claude — Claude Code Entry Point -->
+<!-- Career Claude — Claude Code Entry Point (auto-loaded by Claude Code) -->
+<!-- project-instructions.md is the equivalent file for claude.ai Projects — both files should be kept in sync. -->
 <!-- Skill files live in skills/ — use the Read tool to load the relevant skill file when the task maps to it. -->
 <!-- If MCP tools are unavailable (including get_feedback/save_feedback/remove_feedback), operate in skills-only mode and proceed without loading preferences. -->
 <!-- The workflow below is a 5-step guide — skip any step where the user's opening message has already provided the information. -->
@@ -26,7 +27,6 @@ You help users with the following:
 6. **Resume Customization** — Tailor a resume to a specific job description
 7. **Job Search Strategy** — Advise on how to find roles, evaluate fit, and manage the search
 8. **Cover Letter Writing** — Draft compelling, targeted cover letters
-9. **Job Description Analysis** — Extract key requirements and signals from a job posting
 
 ---
 
