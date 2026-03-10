@@ -97,6 +97,46 @@ When analyzing a JD, look for:
 
 ---
 
+## AI-Era Resume Positioning
+
+### How ATS Has Evolved
+Traditional ATS used simple keyword matching — count the matches, rank the candidates. Modern systems go further:
+- **Semantic analysis**: AI-powered ATS can recognize synonyms and related concepts. "Led engineering team" and "managed developers" may score similarly. This helps, but exact JD phrasing still wins in tiebreakers.
+- **Pattern recognition**: Some systems evaluate career trajectory, job tenure patterns, and role progression — not just keywords.
+- **Contextual scoring**: Advanced platforms weigh where a keyword appears (a skill in your job title or summary carries more weight than the same skill buried in bullet #7 of a previous role).
+
+Bottom line: keyword matching still matters, but the systems are smarter. Write for meaning, not just for stuffing terms in.
+
+### Skills-Based Hiring
+A growing number of companies now evaluate candidates on **skills and demonstrated abilities** rather than credentials, degrees, or pedigree. What this means for your resume:
+- **Lead with what you can do**, not where you went to school. Skills sections and accomplishment-driven bullets matter more than ever.
+- **Show evidence of skill**: Don't just list "Python" — show what you built with it, the scale, and the outcome.
+- **Certifications and projects carry real weight** for career changers and non-traditional candidates. Treat them as first-class resume sections.
+- **Remove credential gatekeeping from your own thinking**: If the JD says "or equivalent experience," take that seriously.
+
+### The Full Picture: Beyond the Resume
+Your resume is one artifact in a broader hiring signal. Hiring managers and recruiters also evaluate:
+- **LinkedIn profile**: Recruiters check this before (and after) reading your resume. Align your headline, summary, and experience with your resume narrative.
+- **Your professional story**: How you talk about your career in conversations, networking, and interviews reinforces or undermines what's on paper.
+- **Reputation and referrals**: Internal referrals and how others describe your work often carry more weight than any document.
+
+Treat the resume as the anchor of a consistent professional narrative — not the entire narrative.
+
+### Using AI Tools Strategically
+AI can accelerate your resume work, but it must be used with guardrails:
+- **Audit your own resume with AI** before submitting: paste your resume and the JD into a tool and ask it to identify keyword gaps, weak bullets, and formatting issues.
+- **Use AI to generate bullet point drafts**, then rewrite them in your voice with your real numbers. AI output without your specifics reads as hollow.
+- **Never let AI fabricate experience**. Hiring managers are increasingly skilled at spotting AI-generated fluff, and misrepresentation is a fireable offense even after you're hired.
+- **Cross-reference AI suggestions** against the actual JD — AI tools sometimes hallucinate requirements that don't exist.
+
+### Optimize for Humans and Machines
+AI and ATS get you past the filter. A human makes the final decision. Design for both:
+- **Machine layer**: Standard headings, mirrored JD keywords, clean formatting, parseable structure.
+- **Human layer**: Compelling narrative, specific achievements, readability, personality where appropriate (especially in the summary).
+- **Test**: If your resume reads like a keyword list, it fails the human layer. If it reads like a personal essay, it fails the machine layer. Hit both.
+
+---
+
 ## Professional Summary
 
 ### Purpose
@@ -111,6 +151,26 @@ The summary replaces the outdated objective statement. It's a 2–4 sentence pit
 - Mentions what you want instead of what you offer
 - Uses first person ("I am a...")
 - Repeats the job title verbatim without adding context
+
+---
+
+## Career Narrative
+
+### Your Resume Tells a Story
+Each role on your resume should not exist in isolation. When read top to bottom, your experience section should show a coherent arc: skills building on each other, scope expanding, and a consistent professional theme emerging.
+
+### Making the Narrative Visible
+- **Thread a consistent theme** across roles. If you're a "builder who scales teams and systems," each position should demonstrate a facet of that identity.
+- **Show progression**: increasing team size, larger budgets, broader scope, harder problems. Even lateral moves should show depth gained.
+- **Connect the dots for the reader**: if a transition between roles isn't obvious (e.g., marketing to product management), use your bullet points to highlight the transferable skills that bridge the two.
+
+### Addressing Gaps Proactively
+- Brief parenthetical explanations work well: "Career break (2022–2023): Full-time caregiver" or "Sabbatical (2021): Completed AWS Solutions Architect certification"
+- Frame gaps as intentional transitions — education, caregiving, health, or deliberate exploration — rather than leaving them unexplained for the reader to fill in negatively.
+- Keep gap explanations to one line. Do not over-explain or apologize.
+
+### Connection to Personal Branding
+Your resume narrative is one expression of your core professional story. The same thread should appear in your LinkedIn summary, your elevator pitch, and your interview answers. Consistency across these surfaces builds credibility; contradictions erode it.
 
 ---
 
@@ -160,3 +220,12 @@ Score guide:
 - 7–8: Minor refinements needed
 - 5–6: Significant rewrites required
 - Below 5: Consider rebuilding from scratch
+
+---
+
+## Related Skills
+
+- **Personal Branding** (`skills/personal-branding.md`) — Develop the elevator pitch and core narrative that feed your professional summary
+- **Self-Discovery & Career Clarity** (`skills/self-discovery-career-clarity.md`) — Your values and work style determine which accomplishments to highlight
+- **Resume Customization** (`skills/resume-customization.md`) — After auditing, tailor your resume to specific job descriptions
+- **Interview Preparation** (`skills/interview-preparation.md`) — Your resume stories become your interview stories
