@@ -57,7 +57,7 @@ Say:
 Say:
 > Last step — Career Claude needs eight knowledge files.
 >
-> In your project, find the **Knowledge** section and upload these eight files from the Career Claude repository (one at a time):
+> In your project, click the **+ Add content** button (or the file upload area) to upload these eight files from the Career Claude repository:
 >
 > - `skills/self-discovery-career-clarity.md`
 > - `skills/career-decision-making.md`
