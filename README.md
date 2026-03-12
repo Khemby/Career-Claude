@@ -51,7 +51,7 @@ cd Career-Claude
 claude
 ```
 
-Career Claude activates automatically.
+Once Claude opens, type **"let's get started"** to begin.
 
 ---
 
