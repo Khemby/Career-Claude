@@ -43,7 +43,6 @@ Career Claude is an AI career coach that operates through natural conversation. 
 | Cover letter drafting | Claude applies `cover-letter.md` skill file |
 | Job search strategy | Claude applies `job-search-strategy.md` skill file |
 | Resume parsing (PDF/DOCX) | `parse_resume` MCP tool |
-| Live job search | `search_jobs` MCP tool → Adzuna API |
 | Resume-JD fit scoring | `score_resume_fit` MCP tool → Python ML service |
 | Persistent preferences | `save_feedback` / `get_feedback` / `remove_feedback` MCP tools |
 
@@ -82,7 +81,6 @@ The system is designed so that **each layer is optional**. A user can get value 
 │              mcp-server/src/index.ts                     │
 │                                                          │
 │  Tools:                                                  │
-│  • search_jobs      → job-search.ts → Adzuna API         │
 │  • parse_resume     → resume-parser.ts (pdf-parse,       │
 │                        mammoth)                          │
 │  • score_resume_fit → fit-scorer.ts → Python service     │
@@ -126,7 +124,6 @@ career-claude/
 ├── mcp-server/                      # TypeScript MCP tool server
 │   ├── src/
 │   │   ├── index.ts                 # Server entry point, tool registration & routing
-│   │   ├── job-search.ts            # Adzuna API integration + mock fallback
 │   │   ├── resume-parser.ts         # PDF/DOCX text extraction + structured parsing
 │   │   ├── fit-scorer.ts            # HTTP client for Python ML service + fallback
 │   │   └── feedback.ts              # Persistent preferences store (JSON file)
@@ -149,42 +146,6 @@ career-claude/
 The MCP server extends Claude with tools that require external data or file system access. It is written in TypeScript, runs as a local Node.js process, and communicates with Claude over stdio using the Model Context Protocol.
 
 ### Tools Reference
-
-#### `search_jobs`
-
-Search for real job listings via the Adzuna API.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `query` | string | Yes | Job title or keywords (e.g. `"Senior Product Manager B2B SaaS"`) |
-| `location` | string | No | City, state, or `"remote"`. Omit for remote-friendly search. |
-| `max_results` | number | No | Results to return. Default: 10, max: 25. |
-
-**Returns:** `JobSearchResult`
-```json
-{
-  "query": "Senior Product Manager",
-  "location": "remote",
-  "total_found": 342,
-  "listings": [
-    {
-      "title": "Senior Product Manager",
-      "company": "Acme Corp",
-      "location": "Remote",
-      "description": "...",
-      "url": "https://...",
-      "posted_date": "2026-03-01T00:00:00Z",
-      "salary_min": 140000,
-      "salary_max": 180000,
-      "salary_currency": "USD"
-    }
-  ]
-}
-```
-
-**Fallback behavior:** If `ADZUNA_APP_ID` and `ADZUNA_API_KEY` are not set, returns mock placeholder data so the integration can be tested without credentials.
-
----
 
 #### `parse_resume`
 
@@ -343,17 +304,13 @@ Add to your `claude_desktop_config.json` (typically at `~/Library/Application Su
   "mcpServers": {
     "career-claude": {
       "command": "node",
-      "args": ["/absolute/path/to/career-claude/mcp-server/dist/index.js"],
-      "env": {
-        "ADZUNA_APP_ID": "your_app_id",
-        "ADZUNA_API_KEY": "your_api_key"
-      }
+      "args": ["/absolute/path/to/career-claude/mcp-server/dist/index.js"]
     }
   }
 }
 ```
 
-Restart Claude Desktop. All six tools will be available automatically.
+Restart Claude Desktop. All five tools will be available automatically.
 
 ---
 
@@ -448,7 +405,7 @@ Claude's tool description instructs it to detect `available: false` and respond 
 
 This means:
 - The MCP server starts successfully whether or not Python is installed
-- All other tools (`search_jobs`, `parse_resume`, `save_feedback`, etc.) are completely unaffected
+- All other tools (`parse_resume`, `save_feedback`, etc.) are completely unaffected
 - Users without Python get the full system minus fit scoring, with no error messages
 
 ---
@@ -670,8 +627,6 @@ Future sessions:
 
 | Variable | Component | Default | Description |
 |---|---|---|---|
-| `ADZUNA_APP_ID` | MCP Server | — | Adzuna application ID. Required for live job search. Get one free at [developer.adzuna.com](https://developer.adzuna.com/). |
-| `ADZUNA_API_KEY` | MCP Server | — | Adzuna API key. Required for live job search. |
 | `CAREER_CLAUDE_FEEDBACK_PATH` | MCP Server | `~/.career-claude/feedback.json` | Override the path for the preferences store. Useful for testing or shared environments. |
 
 ---

@@ -1,33 +1,9 @@
-import { readFileSync } from "node:fs";
-import { resolve, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
   ListToolsRequestSchema,
   CallToolRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
-import { searchJobs } from "./job-search.js";
-
-// Load .env file from mcp-server/ directory
-const __dirname = dirname(fileURLToPath(import.meta.url));
-try {
-  const envPath = resolve(__dirname, "..", ".env");
-  const envContent = readFileSync(envPath, "utf-8");
-  for (const line of envContent.split("\n")) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith("#")) continue;
-    const eqIndex = trimmed.indexOf("=");
-    if (eqIndex === -1) continue;
-    const key = trimmed.slice(0, eqIndex).trim();
-    const value = trimmed.slice(eqIndex + 1).trim();
-    if (!process.env[key]) {
-      process.env[key] = value;
-    }
-  }
-} catch {
-  // .env file not found — that's fine, fall back to environment variables
-}
 import { parseResume } from "./resume-parser.js";
 import { scoreFit } from "./fit-scorer.js";
 import {
@@ -44,35 +20,6 @@ const server = new Server(
 
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: [
-    // -----------------------------------------------------------------------
-    // Job search
-    // -----------------------------------------------------------------------
-    {
-      name: "search_jobs",
-      description:
-        "Search for job listings matching a role title and optional location. Returns a list of relevant open positions with titles, companies, locations, and links.",
-      inputSchema: {
-        type: "object",
-        properties: {
-          query: {
-            type: "string",
-            description:
-              "Job title or keywords to search for (e.g. 'Senior Product Manager B2B SaaS')",
-          },
-          location: {
-            type: "string",
-            description:
-              "City, state, or 'remote'. Leave empty for remote-friendly search.",
-          },
-          max_results: {
-            type: "number",
-            description: "Maximum number of results to return (default: 10, max: 25)",
-          },
-        },
-        required: ["query"],
-      },
-    },
-
     // -----------------------------------------------------------------------
     // Resume parser
     // -----------------------------------------------------------------------
@@ -221,18 +168,6 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
-
-  if (name === "search_jobs") {
-    const { query, location, max_results } = args as {
-      query: string;
-      location?: string;
-      max_results?: number;
-    };
-    const results = await searchJobs(query, location, max_results ?? 10);
-    return {
-      content: [{ type: "text", text: JSON.stringify(results, null, 2) }],
-    };
-  }
 
   if (name === "parse_resume") {
     const { content, format } = args as {

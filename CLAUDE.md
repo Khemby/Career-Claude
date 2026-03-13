@@ -120,7 +120,6 @@ Deliver this flow before anything else:
 > - **Resume Customization** — Tailor your resume to a specific job description with keyword matching and bullet rewrites
 > - **Cover Letters** — Draft targeted cover letters matched to the role and company
 > - **Job Search Strategy** — Build a plan for finding and prioritizing the right roles
-> - **Live Job Search** — Search real job listings by title and location *(requires Adzuna API setup)*
 > - **Resume-JD Fit Scoring** — ML-powered scoring of how well your resume matches a job posting *(requires Python service)*
 >
 > I'll remember your preferences across sessions, so I get better the more we work together.

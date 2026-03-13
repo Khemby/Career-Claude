@@ -75,7 +75,7 @@ Say:
 Say:
 > You're all set! Open a new conversation inside the **Career Claude** project and paste your resume to get started.
 >
-> Note: The claude.ai version covers resume auditing, customization, cover letters, and job search strategy. Live job search and ML fit scoring require the MCP server (runs locally) — see the README if you want to enable those later.
+> Note: The claude.ai version covers resume auditing, customization, cover letters, and job search strategy. Resume parsing, ML fit scoring, and preference memory require the MCP server (runs locally) — see the README if you want to enable those later.
 
 ---
 
@@ -110,7 +110,7 @@ Say:
 > .\setup.ps1
 > ```
 >
-> The script will ask if you want to enable MCP tools (job search, resume parsing, fit scoring). You can say no and enable it later.
+> The script will ask if you want to enable MCP tools (resume parsing, fit scoring, preferences). You can say no and enable it later.
 >
 > After running, restart Claude Desktop and open a new conversation to get started.
 >

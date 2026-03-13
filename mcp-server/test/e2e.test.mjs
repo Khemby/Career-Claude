@@ -15,7 +15,6 @@ import { join } from "node:path";
 import { randomUUID } from "node:crypto";
 
 import { parseResume } from "../dist/resume-parser.js";
-import { searchJobs } from "../dist/job-search.js";
 import { scoreFit } from "../dist/fit-scorer.js";
 import { saveFeedback, getFeedback, removeFeedback } from "../dist/feedback.js";
 
@@ -140,46 +139,7 @@ React, Node.js, SQL
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. search_jobs (mock mode — no API keys)
-// ─────────────────────────────────────────────────────────────────────────────
-
-describe("search_jobs (mock mode)", () => {
-  before(() => {
-    // Ensure API keys are NOT set so mock path is used
-    delete process.env.ADZUNA_APP_ID;
-    delete process.env.ADZUNA_API_KEY;
-  });
-
-  it("returns valid structure with query echoed back", async () => {
-    const result = await searchJobs("Software Engineer", "Austin, TX", 5);
-
-    assert.equal(result.query, "Software Engineer");
-    assert.equal(result.location, "Austin, TX");
-    assert.ok(Array.isArray(result.listings), "listings is an array");
-    assert.ok(result.listings.length > 0, "at least one listing");
-
-    const listing = result.listings[0];
-    assert.ok(typeof listing.title === "string" && listing.title.length > 0, "listing has title");
-    assert.ok(typeof listing.company === "string" && listing.company.length > 0, "listing has company");
-    assert.ok(typeof listing.url === "string" && listing.url.length > 0, "listing has url");
-  });
-
-  it("includes salary data in mock listings", async () => {
-    const result = await searchJobs("Data Scientist", "Remote", 5);
-    const listing = result.listings[0];
-    assert.ok(typeof listing.salary_min === "number", "salary_min is a number");
-    assert.ok(typeof listing.salary_max === "number", "salary_max is a number");
-    assert.ok(listing.salary_max >= listing.salary_min, "salary_max >= salary_min");
-  });
-
-  it("respects max_results limit", async () => {
-    const result = await searchJobs("Engineer", "NYC", 1);
-    assert.ok(result.listings.length <= 1, `expected <= 1 listing, got ${result.listings.length}`);
-  });
-});
-
-// ─────────────────────────────────────────────────────────────────────────────
-// 3. score_resume_fit (fallback — Python service NOT running)
+// 2. score_resume_fit (fallback — Python service NOT running)
 // ─────────────────────────────────────────────────────────────────────────────
 
 describe("score_resume_fit (fallback behavior)", () => {
@@ -204,7 +164,7 @@ describe("score_resume_fit (fallback behavior)", () => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. feedback CRUD
+// 3. feedback CRUD
 // ─────────────────────────────────────────────────────────────────────────────
 
 describe("feedback CRUD", () => {

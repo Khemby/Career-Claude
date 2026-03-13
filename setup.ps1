@@ -14,9 +14,6 @@ $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $McpEntryPath = Join-Path $ScriptDir "mcp-server\dist\index.js"
 $ConfigPath = Join-Path $env:APPDATA "Claude\claude_desktop_config.json"
 $McpJsonPath = Join-Path $ScriptDir ".mcp.json"
-$EnvPath = Join-Path $ScriptDir "mcp-server\.env"
-$EnvExamplePath = Join-Path $ScriptDir "mcp-server\.env.example"
-
 Write-Host ""
 Write-Host "Career Claude Setup"
 Write-Host "-----------------------------------------------"
@@ -70,35 +67,6 @@ function Create-McpJson {
     Write-Host "Created .mcp.json for Claude Code."
 }
 
-function Setup-EnvFile {
-    if (Test-Path $EnvPath) {
-        Write-Host ".env file already exists -- skipping."
-        return
-    }
-
-    Write-Host ""
-    Write-Host "The job search tool uses the Adzuna API (free tier)."
-    Write-Host "Sign up at: https://developer.adzuna.com/"
-    Write-Host ""
-    $addKeys = Read-Host "Do you have Adzuna API keys to add now? [y/N]"
-
-    if ($addKeys -match "^[yY]") {
-        $appId = Read-Host "  ADZUNA_APP_ID"
-        $apiKey = Read-Host "  ADZUNA_API_KEY"
-
-        @(
-            "# Adzuna API credentials (free tier: https://developer.adzuna.com/)"
-            "ADZUNA_APP_ID=$appId"
-            "ADZUNA_API_KEY=$apiKey"
-        ) | Set-Content $EnvPath -Encoding UTF8
-        Write-Host "Saved to mcp-server\.env"
-    } else {
-        Write-Host ""
-        Write-Host "No problem -- job search will return sample data until keys are added."
-        Write-Host "When ready, copy mcp-server\.env.example to mcp-server\.env and fill in your keys."
-    }
-}
-
 function Build-Mcp {
     Write-Host ""
     Write-Host "Checking for Node.js..."
@@ -140,19 +108,19 @@ if ($McpOnly) {
     Build-Mcp
     Patch-Config -ConfigPath $ConfigPath -McpPath $McpEntryPath
     Create-McpJson
-    Setup-EnvFile
+
     Write-Host "Restart Claude Desktop to activate."
     exit 0
 }
 
 Write-Host ""
-$response = Read-Host "Enable MCP tools (job search, resume parsing, fit scoring)? Requires Node.js 18+. [y/N]"
+$response = Read-Host "Enable MCP tools (resume parsing, fit scoring, preferences)? Requires Node.js 18+. [y/N]"
 
 if ($response -match "^[yY]") {
     Build-Mcp
     Patch-Config -ConfigPath $ConfigPath -McpPath $McpEntryPath
     Create-McpJson
-    Setup-EnvFile
+
     Write-Host ""
     Write-Host "Claude Desktop config updated."
     Write-Host "Restart Claude Desktop to activate all tools."

@@ -6,7 +6,6 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MCP_ENTRY_PATH="$SCRIPT_DIR/mcp-server/dist/index.js"
 MCP_JSON_PATH="$SCRIPT_DIR/.mcp.json"
-ENV_PATH="$SCRIPT_DIR/mcp-server/.env"
 MCP_ONLY=false
 
 for arg in "$@"; do
@@ -88,39 +87,6 @@ EOF
   echo "Created .mcp.json for Claude Code."
 }
 
-# -- Set up .env file for Adzuna keys -----------------------------------------
-
-setup_env_file() {
-  if [ -f "$ENV_PATH" ]; then
-    echo ".env file already exists -- skipping."
-    return
-  fi
-
-  echo ""
-  echo "The job search tool uses the Adzuna API (free tier)."
-  echo "Sign up at: https://developer.adzuna.com/"
-  echo ""
-  read -r -p "Do you have Adzuna API keys to add now? [y/N] " add_keys
-
-  case "$add_keys" in
-    [yY][eE][sS]|[yY])
-      read -r -p "  ADZUNA_APP_ID: " app_id
-      read -r -p "  ADZUNA_API_KEY: " api_key
-      cat > "$ENV_PATH" <<EOF
-# Adzuna API credentials (free tier: https://developer.adzuna.com/)
-ADZUNA_APP_ID=$app_id
-ADZUNA_API_KEY=$api_key
-EOF
-      echo "Saved to mcp-server/.env"
-      ;;
-    *)
-      echo ""
-      echo "No problem -- job search will return sample data until keys are added."
-      echo "When ready, copy mcp-server/.env.example to mcp-server/.env and fill in your keys."
-      ;;
-  esac
-}
-
 # -- Build MCP server ----------------------------------------------------------
 
 build_mcp() {
@@ -172,7 +138,7 @@ fi
 
 # Normal flow -- ask about MCP
 echo ""
-read -r -p "Enable MCP tools (job search, resume parsing, fit scoring)? Requires Node.js 18+. [y/N] " response
+read -r -p "Enable MCP tools (resume parsing, fit scoring, preferences)? Requires Node.js 18+. [y/N] " response
 
 case "$response" in
   [yY][eE][sS]|[yY])
@@ -188,7 +154,7 @@ case "$response" in
       echo "Add the MCP entry manually -- see README.md for the JSON snippet."
     fi
     create_mcp_json
-    setup_env_file
+
     ;;
   *)
     echo ""

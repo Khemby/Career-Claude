@@ -24,9 +24,19 @@ An AI career coach that actually knows what it's doing — built on Claude.
 
 ## Quick Start
 
-### Browser (claude.ai) — no install
+### Claude Code (Terminal)
 
-Open [`setup-assistant-prompt.md`](./setup-assistant-prompt.md), paste it into any Claude conversation, and follow the guided setup. Takes about 5 minutes.
+**Step 1: Install on your machine**
+
+Open Claude Code and paste this. Claude will do the rest.
+
+> Install Career Claude: run `git clone https://github.com/Khemby/Career-Claude.git ~/.claude/skills/career-claude && cd ~/.claude/skills/career-claude/mcp-server && npm install && npm run build`. Then say "let's get started".
+
+**Step 2: Add to your project so teammates get it (optional)**
+
+> Add Career Claude to this project: run `cp -Rf ~/.claude/skills/career-claude .claude/skills/career-claude && rm -rf .claude/skills/career-claude/.git && cd .claude/skills/career-claude/mcp-server && npm install && npm run build`. Then say "let's get started".
+
+Real files get committed to your repo (not a submodule), so `git clone` just works for teammates. They just need to run `cd .claude/skills/career-claude/mcp-server && npm install && npm run build` once to build the MCP server.
 
 ### Desktop App (Claude Desktop)
 
@@ -43,15 +53,9 @@ cd Career-Claude
 
 Restart Claude Desktop. Done.
 
-### Terminal (Claude Code)
+### Browser (claude.ai) — no install
 
-```bash
-git clone https://github.com/Khemby/Career-Claude.git
-cd Career-Claude
-claude
-```
-
-Once Claude opens, type **"let's get started"** to begin.
+Open [`setup-assistant-prompt.md`](./setup-assistant-prompt.md), paste it into any Claude conversation, and follow the guided setup. Takes about 5 minutes.
 
 ---
 
@@ -91,15 +95,13 @@ Build a search plan with target companies, sourcing channels, and application tr
 
 ---
 
-## Power Features (Optional)
+## Power Features
 
-Career Claude works out of the box with just the skill files. For extra capabilities, you can enable:
+The Claude Code install builds the MCP server automatically, giving you:
 
-- **Live Job Search** — search real listings via the Adzuna API
 - **Resume Parsing** — extract structured data from PDF/DOCX resumes
-- **ML Fit Scoring** — semantic scoring of how well your resume matches a job description
-
-These require the MCP server (Node.js) and optionally the Python ML service. See [ARCHITECTURE.md](./ARCHITECTURE.md) for setup instructions.
+- **ML Fit Scoring** — semantic scoring of how well your resume matches a job description *(requires optional Python service — see [ARCHITECTURE.md](./ARCHITECTURE.md))*
+- **Preference Memory** — remembers your constraints across sessions via `save_feedback` / `get_feedback`
 
 ---
 

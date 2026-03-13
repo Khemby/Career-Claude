@@ -1,8 +1,7 @@
 # Career Claude MCP Server
 
-MCP (Model Context Protocol) server that extends Career Claude with six tools:
+MCP (Model Context Protocol) server that extends Career Claude with five tools:
 
-- **`search_jobs`** — Search real job listings using the Adzuna API
 - **`parse_resume`** — Extract structured data from plain text, PDF, or DOCX resumes
 - **`score_resume_fit`** — Semantically score how well a resume matches a job description (requires Python ML service)
 - **`save_feedback`** — Persist a user preference or correction across sessions
@@ -10,21 +9,6 @@ MCP (Model Context Protocol) server that extends Career Claude with six tools:
 - **`remove_feedback`** — Delete a preference by ID
 
 ## Tools
-
-### `search_jobs`
-
-Searches for job listings matching a query and optional location.
-
-**Parameters:**
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `query` | string | yes | Job title or keywords (e.g. `"Senior Product Manager B2B SaaS"`) |
-| `location` | string | no | City, state, or `"remote"` |
-| `max_results` | number | no | Max results to return (default: 10, max: 25) |
-
-**Returns:** List of job listings with title, company, location, description snippet, URL, posting date, and salary range.
-
----
 
 ### `parse_resume`
 
@@ -117,19 +101,7 @@ npm run build
 
 | Variable | Description |
 |----------|-------------|
-| `ADZUNA_APP_ID` | Your Adzuna application ID ([get one free](https://developer.adzuna.com/)) |
-| `ADZUNA_API_KEY` | Your Adzuna API key |
 | `CAREER_CLAUDE_FEEDBACK_PATH` | Override path for the feedback JSON file (default: `~/.career-claude/feedback.json`) |
-
-### Setting up Adzuna credentials
-
-1. Copy the example env file and add your keys:
-   ```bash
-   cp mcp-server/.env.example mcp-server/.env
-   ```
-2. Edit `mcp-server/.env` with your Adzuna App ID and API key.
-
-The server loads this file automatically on startup. Without Adzuna credentials, `search_jobs` returns mock data. The feedback tools work with no credentials — they only need filesystem access.
 
 ## Running
 
@@ -148,11 +120,7 @@ npm start
   "mcpServers": {
     "career-claude": {
       "command": "node",
-      "args": ["/path/to/mcp-server/dist/index.js"],
-      "env": {
-        "ADZUNA_APP_ID": "your_app_id",
-        "ADZUNA_API_KEY": "your_api_key"
-      }
+      "args": ["/path/to/mcp-server/dist/index.js"]
     }
   }
 }
