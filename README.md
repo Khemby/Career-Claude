@@ -30,11 +30,11 @@ An AI career coach that actually knows what it's doing — built on Claude.
 
 Open Claude Code and paste this. Claude will do the rest.
 
-> Install Career Claude: run `git clone https://github.com/Khemby/Career-Claude.git ~/.claude/skills/career-claude && cd ~/.claude/skills/career-claude/mcp-server && npm install && npm run build`. Then say "let's get started".
+> Install Career Claude: run `git clone https://github.com/Khemby/Career-Claude.git ~/.claude/skills/career-claude && cd ~/.claude/skills/career-claude/mcp-server && npm install && npm run build`. Once the build finishes, read the CLAUDE.md file in the career-claude directory and introduce yourself as Career Claude with the full capabilities overview and intake question.
 
 **Step 2: Add to your project so teammates get it (optional)**
 
-> Add Career Claude to this project: run `cp -Rf ~/.claude/skills/career-claude .claude/skills/career-claude && rm -rf .claude/skills/career-claude/.git && cd .claude/skills/career-claude/mcp-server && npm install && npm run build`. Then say "let's get started".
+> Add Career Claude to this project: run `cp -Rf ~/.claude/skills/career-claude .claude/skills/career-claude && rm -rf .claude/skills/career-claude/.git && cd .claude/skills/career-claude/mcp-server && npm install && npm run build`. Once the build finishes, read the CLAUDE.md file in the career-claude directory and introduce yourself as Career Claude with the full capabilities overview and intake question.
 
 Real files get committed to your repo (not a submodule), so `git clone` just works for teammates. They just need to run `cd .claude/skills/career-claude/mcp-server && npm install && npm run build` once to build the MCP server.
 
