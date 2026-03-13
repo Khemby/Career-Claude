@@ -115,15 +115,6 @@ It saves that and applies it to every future conversation — job suggestions, r
 
 ---
 
-## Roadmap
-
-- Auto-install script for non-technical users (curl | bash)
-- Improved PDF/DOCX parsing with spaCy
-- Interview question generation from resume + JD
-- Application tracker with follow-up reminders
-
----
-
 ## Architecture
 
 For technical details — system architecture, MCP server API reference, ML scorer internals, data flow diagrams, and environment variables — see [ARCHITECTURE.md](./ARCHITECTURE.md).

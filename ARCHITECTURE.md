@@ -46,7 +46,7 @@ Career Claude is an AI career coach that operates through natural conversation. 
 | Resume-JD fit scoring | `score_resume_fit` MCP tool → Python ML service |
 | Persistent preferences | `save_feedback` / `get_feedback` / `remove_feedback` MCP tools |
 
-The system is designed so that **each layer is optional**. A user can get value from skills-only (no server), add the MCP server for job search and parsing, and optionally add the Python service for ML-powered fit scoring. Removing any layer degrades gracefully.
+The system is designed so that **each layer is optional**. A user can get value from skills-only (no server), add the MCP server for resume parsing and preferences, and optionally add the Python service for ML-powered fit scoring. Removing any layer degrades gracefully.
 
 ---
 
