@@ -30,28 +30,13 @@ An AI career coach that actually knows what it's doing — built on Claude.
 
 Open Claude Code and paste this. Claude will do the rest.
 
-> Install Career Claude: run `git clone https://github.com/Khemby/Career-Claude.git ~/.claude/skills/career-claude && cd ~/.claude/skills/career-claude/mcp-server && npm install && npm run build`. Once the build finishes, read the CLAUDE.md file in the career-claude directory and introduce yourself as Career Claude with the full capabilities overview and intake question.
+> Install Career Claude: run `git clone https://github.com/Khemby/Career-Claude.git ~/.claude/skills/career-claude`. Once the clone finishes, read the CLAUDE.md file in the career-claude directory and introduce yourself as Career Claude with the full capabilities overview and intake question.
 
 **Step 2: Add to your project so teammates get it (optional)**
 
-> Add Career Claude to this project: run `cp -Rf ~/.claude/skills/career-claude .claude/skills/career-claude && rm -rf .claude/skills/career-claude/.git && cd .claude/skills/career-claude/mcp-server && npm install && npm run build`. Once the build finishes, read the CLAUDE.md file in the career-claude directory and introduce yourself as Career Claude with the full capabilities overview and intake question.
+> Add Career Claude to this project: run `cp -Rf ~/.claude/skills/career-claude .claude/skills/career-claude && rm -rf .claude/skills/career-claude/.git`. Once done, read the CLAUDE.md file in the career-claude directory and introduce yourself as Career Claude with the full capabilities overview and intake question.
 
-Real files get committed to your repo (not a submodule), so `git clone` just works for teammates. They just need to run `cd .claude/skills/career-claude/mcp-server && npm install && npm run build` once to build the MCP server.
-
-### Desktop App (Claude Desktop)
-
-```bash
-git clone https://github.com/Khemby/Career-Claude.git
-cd Career-Claude
-
-# macOS / Linux
-./setup.sh
-
-# Windows (PowerShell)
-.\setup.ps1
-```
-
-Restart Claude Desktop. Done.
+Real files get committed to your repo (not a submodule), so `git clone` just works for teammates.
 
 ### Browser (claude.ai) — no install
 
@@ -95,29 +80,21 @@ Build a search plan with target companies, sourcing channels, and application tr
 
 ---
 
-## Power Features
-
-The Claude Code install builds the MCP server automatically, giving you:
-
-- **Resume Parsing** — extract structured data from PDF/DOCX resumes
-- **ML Fit Scoring** — semantic scoring of how well your resume matches a job description *(requires optional Python service — see [ARCHITECTURE.md](./ARCHITECTURE.md))*
-- **Preference Memory** — remembers your constraints across sessions via `save_feedback` / `get_feedback`
-
----
-
 ## Memory
 
-Career Claude remembers your preferences across sessions. Tell it your constraints once:
+Career Claude remembers your preferences across sessions (Claude Code) or within a session (claude.ai). Tell it your constraints once:
 
 > "I'm only looking at remote roles, minimum $130k, no finance companies."
 
-It saves that and applies it to every future conversation — job suggestions, resume tailoring, everything.
+It saves that and applies it going forward — job suggestions, resume tailoring, everything.
+
+On Claude Code, preferences are stored in a local `preferences.md` file that's gitignored so your personal data never gets committed.
 
 ---
 
 ## Architecture
 
-For technical details — system architecture, MCP server API reference, ML scorer internals, data flow diagrams, and environment variables — see [ARCHITECTURE.md](./ARCHITECTURE.md).
+For technical details — system design, skill file reference, preference system internals, and data flow diagrams — see [ARCHITECTURE.md](./ARCHITECTURE.md).
 
 ---
 

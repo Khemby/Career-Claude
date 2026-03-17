@@ -2,18 +2,13 @@
 .agents/
 .claude/
 node_modules/
-mcp-server/dist/
-mcp-server/node_modules/
-__pycache__/
-*.pyc
-.venv/
-venv/
-
 # Secrets / local config
 .env
 .env.*
 !.env.example
-.mcp.json
+
+# User preferences (contains personal career data)
+preferences.md
 
 # Internal planning docs
 docs/plans/

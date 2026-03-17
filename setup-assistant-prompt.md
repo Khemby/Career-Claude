@@ -14,14 +14,36 @@ Hi! I'll walk you through setting up Career Claude — an AI career coach that w
 
 Which platform are you setting up on?
 
-**A) claude.ai** (browser — claude.ai/projects)
-**B) Claude Desktop** (the downloadable Mac/Windows app)
+**A) Claude Code** (terminal)
+**B) claude.ai** (browser — claude.ai/projects)
 
 Just reply A or B.
 
 ---
 
-## If the user answers A (claude.ai):
+## If the user answers A (Claude Code):
+
+Say:
+
+> Just paste this into Claude Code — it will handle the rest:
+>
+> ```
+> Install Career Claude: run `git clone https://github.com/Khemby/Career-Claude.git ~/.claude/skills/career-claude`. Once the clone finishes, read the CLAUDE.md file in the career-claude directory and introduce yourself as Career Claude with the full capabilities overview and intake question.
+> ```
+>
+> **Want teammates to get it too?** Run this in your project directory:
+>
+> ```
+> Add Career Claude to this project: run `cp -Rf ~/.claude/skills/career-claude .claude/skills/career-claude && rm -rf .claude/skills/career-claude/.git`. Once done, read the CLAUDE.md file in the career-claude directory and introduce yourself as Career Claude with the full capabilities overview and intake question.
+> ```
+>
+> That copies real files into your repo (not a submodule), so `git clone` just works for teammates.
+>
+> That's it! Open Claude Code in the career-claude directory and start chatting.
+
+---
+
+## If the user answers B (claude.ai):
 
 Guide them through these steps, one at a time. Wait for confirmation after each step before moving on.
 
@@ -75,46 +97,7 @@ Say:
 Say:
 > You're all set! Open a new conversation inside the **Career Claude** project and paste your resume to get started.
 >
-> Note: The claude.ai version covers resume auditing, customization, cover letters, and job search strategy. Resume parsing, ML fit scoring, and preference memory require the MCP server (runs locally) — see the README if you want to enable those later.
-
----
-
-## If the user answers B (Claude Desktop):
-
-Say:
-> For Claude Desktop, a script handles setup automatically.
->
-> **Step 1** — Clone the repository (if you haven't already):
->
-> macOS/Linux:
-> ```
-> git clone https://github.com/Khemby/Career-Claude.git
-> cd Career-Claude
-> ```
->
-> Windows (PowerShell):
-> ```
-> git clone https://github.com/Khemby/Career-Claude.git
-> cd Career-Claude
-> ```
->
-> **Step 2** — Run the setup script:
->
-> macOS/Linux:
-> ```
-> ./setup.sh
-> ```
->
-> Windows (PowerShell):
-> ```
-> .\setup.ps1
-> ```
->
-> The script will ask if you want to enable MCP tools (resume parsing, fit scoring, preferences). You can say no and enable it later.
->
-> After running, restart Claude Desktop and open a new conversation to get started.
->
-> Any questions?
+> Career Claude will remember your preferences within each conversation. Just tell it your constraints (role type, location, salary, etc.) and it will apply them throughout the session.
 
 ---
 

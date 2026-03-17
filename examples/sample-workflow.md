@@ -26,7 +26,7 @@ This is an annotated example of a complete Career Claude session — from first 
 
 Career Claude reads `skills/resume-best-practices.md` and delivers a structured audit.
 
-**Career Claude response:**
+**Career Claude response (after reading the resume text directly):**
 
 ```
 ## Resume Audit
@@ -180,7 +180,6 @@ In this session, Career Claude:
 
 ## How to Run This Yourself
 
-1. Copy the contents of `project-instructions.md` into a Claude Project's system prompt
-2. Add the skill files to the project's knowledge base
-3. Start a new conversation and paste your resume
-4. Follow the workflow above
+**Claude Code:** Open Claude Code in the career-claude directory and paste your resume.
+
+**claude.ai:** Copy `project-instructions.md` into a Claude Project's Instructions panel, upload the skill files, and start a new conversation.
